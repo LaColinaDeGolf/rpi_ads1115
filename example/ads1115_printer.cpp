@@ -23,13 +23,14 @@
 // hasSample() and print the ADC reading.
 class ADS1115Printer : public ADS1115rpi {
 	virtual void hasSample(float v) {
-		printf("%e\n",v);
+		printf("%f\n",v);
 	}
 };
 
 // Creates an instance of the ADS1115Printer class.
 // Prints data till the user presses a key.
 int main(int argc, char *argv[]) {
+	setbuf(stdout, NULL);
 	ADS1115Printer ads1115rpi;
     ADS1115settings s;
 	s.samplingRate = ADS1115settings::FS64HZ;
